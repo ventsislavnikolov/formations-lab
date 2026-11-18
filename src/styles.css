@@ -1,0 +1,151 @@
+@import "@fontsource-variable/geist/wght.css";
+@import "@fontsource-variable/geist-mono/wght.css";
+@import "@fontsource/barlow-condensed/600.css";
+@import "@fontsource/barlow-condensed/700.css";
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Formations Lab tokens. Light is a training-ground whiteboard; dark is the
+ * analysis room. The pitch keeps its grass in both. Components use only these.
+ */
+:root {
+  --bg: #eef1ee;
+  --surface: #ffffff;
+  --surface-2: #e6ebe7;
+  --ink: #12202f;
+  --muted: #5b6876;
+  --line: #d6ddd8;
+  --accent: #1f4fd1;
+  --accent-ink: #ffffff;
+  --team-b: #e2591b;
+  --good: #1e8a4c;
+  --bad: #c2362b;
+  --grass-a: #2f6f43;
+  --grass-b: #2b673e;
+  --chalk: #ffffffd1;
+  --ball: #ffd84a;
+  --press: #ff8a5c;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0d151f;
+  --surface: #15202c;
+  --surface-2: #1b2836;
+  --ink: #e7edf3;
+  --muted: #93a1b0;
+  --line: #263342;
+  --accent: #4d7cff;
+  --team-b: #ff7a3d;
+  --good: #45c27a;
+  --bad: #ff6b5e;
+  --grass-a: #22543a;
+  --grass-b: #1f4e35;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-team-b: var(--team-b);
+  --color-good: var(--good);
+  --color-bad: var(--bad);
+  --color-grass: var(--grass-b);
+  --color-ball: var(--ball);
+  --color-press: var(--press);
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, monospace;
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+}
+
+html,
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+@supports (text-wrap: balance) {
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+}
+
+/* Pitch drawing: SVG classes so the grass and chalk follow the tokens. */
+.stripe-a {
+  fill: var(--grass-a);
+}
+.stripe-b {
+  fill: var(--grass-b);
+}
+.chalk {
+  fill: none;
+  stroke: var(--chalk);
+  stroke-width: 0.28;
+}
+.chalk-dot {
+  fill: var(--chalk);
+}
+.disc-a {
+  fill: var(--accent);
+}
+.disc-b {
+  fill: var(--team-b);
+}
+.ghost {
+  fill: #ffffff14;
+  stroke: #ffffffbf;
+  stroke-width: 0.35;
+  stroke-dasharray: 0.9 0.5;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.card {
+  min-width: 0;
+  padding: 16px 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.card h3 {
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 700;
+}
+.btn {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 7px 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+}
+.btn:hover {
+  border-color: var(--accent);
+}
+.btn-primary {
+  color: var(--accent-ink);
+  background: var(--accent);
+  border-color: var(--accent);
+}

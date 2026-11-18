@@ -1,0 +1,30 @@
+# Git hooks, installed by the `prepare` script on `pnpm install`.
+#
+# pre-commit: Biome on the staged files, read-only; `pnpm fix` corrects them.
+# commit-msg: commitlint, so every commit is a conventional commit.
+# pre-push: typecheck and tests.
+pre-commit:
+  jobs:
+    - name: biome
+      run: pnpm exec biome check --no-errors-on-unmatched {staged_files}
+      glob:
+        - "*.js"
+        - "*.mjs"
+        - "*.cjs"
+        - "*.ts"
+        - "*.tsx"
+        - "*.json"
+        - "*.jsonc"
+        - "*.css"
+
+commit-msg:
+  jobs:
+    - name: commitlint
+      run: pnpm exec commitlint --edit {1}
+
+pre-push:
+  jobs:
+    - name: typecheck-and-test
+      run: pnpm typecheck && pnpm test
+      exclude:
+        - "*.md"

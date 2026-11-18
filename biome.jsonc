@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  // Same presets as next1-360: Ultracite's core, React, TanStack and Vitest rules.
+  "extends": [
+    "ultracite/biome/core",
+    "ultracite/biome/react",
+    "ultracite/biome/tanstack",
+    "ultracite/biome/vitest"
+  ],
+  "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
+  "files": {
+    // Generated route tree and the StatsBomb aggregate are not hand-written.
+    "includes": ["!!src/routeTree.gen.ts", "!!src/data/statsbomb.json"]
+  }
+}

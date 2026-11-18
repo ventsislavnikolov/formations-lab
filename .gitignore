@@ -1,0 +1,16 @@
+node_modules
+.output
+.vercel
+.tanstack
+dist
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+
+# Data audit: cached provider and site responses
+audit/cache
+
+# StatsBomb downloads used by scripts/data
+scripts/data/cache
